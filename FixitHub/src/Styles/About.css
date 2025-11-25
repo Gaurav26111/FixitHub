@@ -1,0 +1,78 @@
+.about-container {
+  width: 100%;
+  min-height: 100vh;
+  background: #f3f6ff;
+  padding: 20px 50px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.about-header h1 {
+  font-size: 32px;
+  color: #4f46e5;
+  margin-bottom: 8px;
+}
+
+.about-header p {
+  color: #555;
+  font-size: 16px;
+}
+
+.about-section,
+.features,
+.team {
+  background: #fff;
+  padding: 18px 22px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+}
+
+.about-section h2,
+.features h2,
+.team h2 {
+  color: #2c2c2c;
+  margin-bottom: 10px;
+}
+
+.about-section p,
+.team p {
+  color: #555;
+}
+
+.features ul {
+  padding-left: 20px;
+  color: #444;
+}
+
+.features li {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.about-section ol {
+  padding-left: 20px;
+  color: #444;
+}
+
+.about-section ol li {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.thanks {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.thanks h3 {
+  color: #4f46e5;
+}
+
+.thanks p {
+  color: #444;
+  font-size: 14px;
+}

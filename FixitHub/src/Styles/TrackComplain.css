@@ -1,0 +1,58 @@
+.track-container {
+  width: 420px;
+  margin: 50px auto;
+  padding: 25px;
+  background: linear-gradient(135deg, #879cf0, #eaf3ff);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.track-container h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.track-container p {
+  color: #555;
+}
+
+.track-container input {
+  width: 90%;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  font-size: 15px;
+}
+
+.track-container button {
+  width: 92%;
+  padding: 12px;
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+
+.track-container button:hover {
+  background-color: #005fd4;
+}
+
+.success {
+  margin-top: 15px;
+  font-size: 16px;
+  color: green;
+  font-weight: 600;
+}
+
+.error {
+  margin-top: 15px;
+  font-size: 16px;
+  color: red;
+  font-weight: 600;
+}

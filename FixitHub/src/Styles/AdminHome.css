@@ -1,0 +1,60 @@
+.admin-home-container {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8fbff;
+  min-height: 100vh;
+}
+
+.admin-home-container h1 {
+  font-size: 2.2rem;
+  color: #024caa;
+  margin-bottom: 10px;
+}
+
+.admin-home-container p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.admin-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.admin-card {
+  background: #ffffff;
+  width: 260px;
+  padding: 25px;
+  text-decoration: none;
+  color: #000;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+}
+
+.admin-card h3 {
+  font-size: 1.3rem;
+  color: #024caa;
+  margin-bottom: 10px;
+}
+
+.admin-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.admin-card:hover {
+  background: #024caa;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.admin-card:hover h3,
+.admin-card:hover p {
+  color: #fff;
+}
