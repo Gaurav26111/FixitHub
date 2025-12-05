@@ -1,81 +1,83 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/AdminViewComplain.css";
 import Footer from "../Component/Footer";
-import NavBar from "../Component/NavBar";
 import AdminNavBar from "../Component/AdminNavBar";
+import axios from "axios";
 
 export default function AdminViewComplain() {
-  const [complaints, setComplaints] = useState([
-    {
-      id: 1,
-      title: "Wi-Fi Not Working",
-      department: "IT",
-      description: "Internet issue in Block A",
-      status: "Pending",
-    },
-    {
-      id: 2,
-      title: "Fan not working",
-      department: "Hostel",
-      description: "Fan is broken in Room 203",
-      status: "Pending",
-    },
-    {
-      id: 3,
-      title: "Books missing",
-      department: "Library",
-      description: "Some books are not available in the section",
-      status: "Pending",
-    },
-  ]);
+  const [complaints, setComplaints] = useState([]);
 
-  const handleSendToDept = (id) => {
-    const updated = complaints.map((c) =>
-      c.id === id ? { ...c, status: "Sent to Department" } : c
+  // Fetch All Complaints From Backend
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/admin/getAll")
+      .then((res) => setComplaints(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+const handleSendToDept = async (complaint) => {
+  try {
+    const departmentId = complaint.assignedDepartment?.id;  // extracting dept id
+        const adminId = localStorage.getItem("adminId"); // get from localStorage later
+        // const adminId = 1;
+
+    await axios.put(
+      `http://localhost:8080/admin/forward/${complaint.id}?departmentId=${departmentId}&adminId=${adminId}`
     );
-    setComplaints(updated);
+
     alert("Complaint sent successfully!");
-  };
+
+    setComplaints((prev) =>
+      prev.map((c) =>
+        c.id === complaint.id ? { ...c, status: "FORWARDED" } : c
+      )
+    );
+  } catch (err) {
+    console.log(err);
+    alert("Error while sending complaint.");
+  }
+};
+
 
   return (
     <>
-    <div className="admin-view-container">
-      <h2>All Student Complaints</h2>
+      <div className="admin-view-container">
+        <h2>All Student Complaints</h2>
 
-      <table className="complaint-table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Department</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {complaints.map((c) => (
-            <tr key={c.id}>
-              <td>{c.title}</td>
-              <td>{c.department}</td>
-              <td>{c.description}</td>
-              <td>{c.status}</td>
-              <td>
-                <button
-                  className="send-btn"
-                  onClick={() => handleSendToDept(c.id)}
-                  disabled={c.status !== "Pending"}
-                >
-                  {c.status === "Pending" ? "Send" : "Sent"}
-                </button>
-              </td>
+        <table className="complaint-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Department</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
 
-      </table>
-    </div>
-    <Footer />
+          <tbody>
+            {complaints.map((c) => (
+              <tr key={c.id}>
+                <td>{c.title}</td>
+                <td>{c.requestedDepartment}</td>
+                <td>{c.description}</td>
+                <td>{c.status}</td>
+                <td>
+                  <button
+                    className="send-btn"
+                    onClick={() => handleSendToDept(c)}
+                    disabled={c.status !== "PENDING"}
+                  >
+                    {c.status === "PENDING" ? "Send" : "Sent"}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <Footer />
     </>
   );
 }

@@ -13,6 +13,11 @@ import AdminHome from "./Pages/AdminHome.jsx";
 
 import NavBar from "./Component/NavBar.jsx";
 import AdminNavBar from "./Component/AdminNavBar.jsx";
+import DepartmentRegister from "./Pages/DepartmentRegister.jsx";
+import DepartmentLogin from "./Pages/DepartmentLogin.jsx";
+import DepartmentHome from "./Pages/DepartmentHome.jsx";
+import DepartAssignedComplain from "./Pages/DepartAssignedComplain.jsx";
+import DepartResolvedComplain from "./Pages/DepartResolvedComplain.jsx";
 
 function Layout() {
   const location = useLocation();
@@ -59,6 +64,12 @@ function App() {
         <Route path="/adminregister" element={<AdminRegister />} />
         <Route path="/adminhome" element={<AdminHome />} />
         <Route path="/adminviewcomplain" element={<AdminViewComplain />} />
+
+        <Route path="/departmentregister" element={<DepartmentRegister />} />
+        <Route path="/departmentlogin" element={<DepartmentLogin />} />
+        <Route path="/departmenthome" element={<DepartmentHome />} />
+        <Route path="/departassignedcomplain" element={<DepartAssignedComplain />} />
+        <Route path="/departresolvedcomplain" element={<DepartResolvedComplain />} />
       </Routes>
     </Router>
   );

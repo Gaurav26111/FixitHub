@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../Styles/Register.css'; // 👉 New CSS file for styling
+import axios from "axios";   // ⬅ install axios:  npm install axios
+import '../Styles/Register.css';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -19,12 +20,19 @@ export default function Register() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  console.log(formData);
-  
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Registration Successful!');
-    navigate('/login');
+
+    try {
+      const response = await axios.post("http://localhost:8080/student/register", formData);
+
+      alert("Registration Successful!");
+      navigate("/");
+
+    } catch (err) {
+      console.error(err);
+      alert("Registration Failed!");
+    }
   };
 
   return (
@@ -34,33 +42,33 @@ export default function Register() {
 
         <div className="input-field">
           <label>Full Name</label>
-          <input type="text" name="name" placeholder="Your full name" onChange={handleChange} required />
+          <input type="text" name="name" onChange={handleChange} required />
         </div>
 
         <div className="row">
           <div className="input-field">
             <label>Age</label>
-            <input type="number" name="age" placeholder="Age" onChange={handleChange} required />
+            <input type="number" name="age" onChange={handleChange} required />
           </div>
           <div className="input-field">
             <label>Mobile</label>
-            <input type="text" name="mobile" placeholder="10-digit mobile" onChange={handleChange} required />
+            <input type="text" name="mobile" onChange={handleChange} required />
           </div>
         </div>
 
         <div className="input-field">
-          <label>StudentID</label>
-          <input type="text" name="studentId" placeholder="Student Id" onChange={handleChange} required />
+          <label>Student ID</label>
+          <input type="text" name="studentId" onChange={handleChange} required />
         </div>
 
         <div className="input-field">
           <label>Email</label>
-          <input type="email" name="email" placeholder="you@example.com" onChange={handleChange} required />
+          <input type="email" name="email" onChange={handleChange} required />
         </div>
 
         <div className="input-field">
           <label>Password</label>
-          <input type="password" name="password" placeholder="At least 6 characters" onChange={handleChange} required />
+          <input type="password" name="password" onChange={handleChange} required />
         </div>
 
         <button type="submit" className="btn">Register</button>

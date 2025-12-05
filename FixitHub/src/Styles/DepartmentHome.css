@@ -1,0 +1,60 @@
+.dept-home-container {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8fbff;
+  min-height: 100vh;
+}
+
+.dept-home-container h1 {
+  font-size: 2.2rem;
+  color: #024caa;
+  margin-bottom: 10px;
+}
+
+.dept-home-container p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.dept-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.dept-card {
+  background: #ffffff;
+  width: 260px;
+  padding: 25px;
+  text-decoration: none;
+  color: #000;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dept-card h3 {
+  font-size: 1.3rem;
+  color: #024caa;
+  margin-bottom: 10px;
+}
+
+.dept-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.dept-card:hover {
+  background: #024caa;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+.dept-card:hover h3,
+.dept-card:hover p {
+  color: #fff;
+}

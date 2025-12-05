@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../Styles/AdminRegister.css";
 
 export default function AdminRegister() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
+    adharNumber: "",
+    mobile: "",
     email: "",
-    department: "",
-    userName: "",
     password: "",
   });
 
@@ -18,12 +19,17 @@ export default function AdminRegister() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  console.log(formData);
-  
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Admin Registered Successfully!");
-    navigate("/login");
+
+    try {
+      await axios.post("http://localhost:8080/admin/register", formData);
+      alert("Admin Registered Successfully!");
+      navigate("/Adminlogin");
+    } catch (err) {
+      console.error(err);
+      alert("Registration Failed!");
+    }
   };
 
   return (
@@ -33,62 +39,32 @@ export default function AdminRegister() {
 
         <div className="admin-input-field">
           <label>Full Name</label>
-          <input
-            type="text"
-            name="fullName"
-            placeholder="Admin full name"
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="name" onChange={handleChange} required />
         </div>
 
         <div className="admin-input-field">
           <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="admin@example.com"
-            onChange={handleChange}
-            required
-          />
+          <input type="email" name="email" onChange={handleChange} required />
         </div>
 
         <div className="admin-input-field">
-          <label>Department</label>
-          <input
-            type="text"
-            name="department"
-            placeholder="Department name"
-            onChange={handleChange}
-            required
-          />
+          <label>Adhar Card Number</label>
+          <input type="number" name="adharNumber" onChange={handleChange} required />
         </div>
 
         <div className="admin-input-field">
-          <label>Username</label>
-          <input
-            type="text"
-            name="userName"
-            placeholder="Choose a username"
-            onChange={handleChange}
-            required
-          />
+          <label>Mobile</label>
+          <input type="number" name="mobile" onChange={handleChange} required />
         </div>
 
         <div className="admin-input-field">
           <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="At least 6 characters"
-            onChange={handleChange}
-            required
-          />
+          <input type="password" name="password" onChange={handleChange} required />
         </div>
 
         <button type="submit" className="admin-btn">Register</button>
         <p className="admin-login-text">
-          Already have an account? <Link to="/login">Admin Login</Link>
+          Already have an account? <Link to="/Adminlogin">Admin Login</Link>
         </p>
       </form>
     </div>
