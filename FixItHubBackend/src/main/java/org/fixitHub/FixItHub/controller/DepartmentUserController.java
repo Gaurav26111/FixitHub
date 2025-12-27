@@ -71,4 +71,8 @@ public class DepartmentUserController {
             return "Login Failed";
         }
 
+    @PostMapping("/logout")
+    public String logout(){
+        return "logout successful";
+    }
 }

@@ -47,6 +47,11 @@ public class AdminController {
         return "Login Failed: Invalid credentials!";
     }
 
+    @PostMapping("/logout")
+    public String logout(){
+        return "logout successful";
+    }
+
     @GetMapping("/pending")
     public List<Complain> getPendingComplaints() {
         return complainRepository.findByStatus(ComplainStatus.PENDING);

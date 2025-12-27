@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import '../Styles/NavBar.css';
 import { FaUser, FaTimes } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import Logout from '../Pages/Logout';
 
 function NavBar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -48,7 +49,7 @@ function NavBar() {
         <ul className="sidebar-links">
           <li onClick={() => handleNavigation('/profile')}>Profile</li>
           <li onClick={() => handleNavigation('/security')}>Security</li>
-          <li onClick={() => handleNavigation('/logout')}>Logout</li>
+          <li onClick={() => handleNavigation(<Logout />)}>Logout</li>
         </ul>
       </div>
     </>

@@ -45,7 +45,7 @@ function DepartmentNavBar() {
         <ul className="sidebar-links">
           <li onClick={() => handleNavigation('/profile')}>Profile</li>
           <li onClick={() => handleNavigation('/security')}>Security</li>
-          <li onClick={() => handleNavigation('/logout')}>Logout</li>
+          <li onClick={() => handleNavigation('/departmentlogin')}>Logout</li>
         </ul>
       </div>
     </>

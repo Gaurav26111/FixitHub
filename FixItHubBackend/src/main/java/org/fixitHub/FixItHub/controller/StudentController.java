@@ -43,4 +43,9 @@ public class StudentController {
         }
         return "Login Failed: Invalid credentials!";
     }
+
+    @PostMapping("/logout")
+    public String logout(){
+        return "logout successful";
+    }
 }
